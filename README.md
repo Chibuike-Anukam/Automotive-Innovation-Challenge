@@ -9,7 +9,7 @@ The system addresses the common urban problem of finding available parking by le
 ### Key Features:
 - Real-time parking spot detection using computer vision
 - AI model trained on large dataset for accurate identification
-- Web-based user interface for easy access to parking information
+- Web-based user interface for easy access to parking information (named 'Smart Park' by team)
 - Integration with existing infrastructure cameras
 - Scalable system design for multiple parking locations
 
