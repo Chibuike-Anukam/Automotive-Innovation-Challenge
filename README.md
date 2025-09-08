@@ -35,8 +35,6 @@ The system addresses the common urban problem of finding available parking by le
 ### User Interface:
 - Web-based application for user accessibility
 - Real-time parking availability display
-- Location-based parking information
-- User-friendly interface design
 
 ## Technical Implementation
 ### AI/Machine Learning:
@@ -47,25 +45,20 @@ The system addresses the common urban problem of finding available parking by le
 - Performance: Real-time processing capability
 ### Computer Vision:
 - Infrastructure camera integration
-- Image preprocessing and enhancement
 - Parking spot boundary detection
 - Occupancy status classification
-- Multi-camera feed coordination
 ### Web Application:
 - Frontend user interface development
 - Real-time data visualization
-- Location mapping integration
 - Responsive design for multiple devices
-- Backend API for data aggregation
 
 ## Development Process
 ### Day 1: Planning & Setup
 - Problem analysis and solution design
 - Team role assignment and project planning
-- Initial dataset preparation and model setup
-- Architecture design and technology selection
 ### Day 2: Core Development
-- AI model training and optimization
+- Architecture design and technology selection
+- AI model setup and training
 - Computer vision pipeline implementation
 - Web interface development
 - Integration testing and debugging
@@ -78,7 +71,7 @@ The system addresses the common urban problem of finding available parking by le
 ## Results & Achievements
 ### Technical Outcomes:
 - Unsuccessfully retrained YOLO model for parking spot detection (failed after 3/100 epochs)
-- Implemented web-based user interface, but could not connect model as API in backend
+- Implemented web-based user interface, but could not connect model as an API in backend
 ### Learning Outcomes:
 - Project Management: Intensive 3-day project timeline management
 - AI/ML Development: Hands-on experience with YOLO model training and optimization
@@ -97,7 +90,6 @@ The system addresses the common urban problem of finding available parking by le
 - 4-person multidisciplinary team
 - Roles: AI/ML development, computer vision, web development, project coordination
 - Collaborative development using modern software practices
-- Intensive sprint-based development methodology
 
 ## Event Information
 ### Challenge Details:
