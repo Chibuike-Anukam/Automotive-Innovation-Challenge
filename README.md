@@ -106,9 +106,13 @@ The system addresses the common urban problem of finding available parking by le
 - Web application source code
 
 
+
 This project demonstrates the practical application of AI and computer vision technologies to solve real-world urban mobility challenges. Developed under intensive timeline constraints, it showcases rapid prototyping, team collaboration, and innovative problem-solving skills.
 
 Team Achievement: Successful completion of Automotive Innovation Challenge
+
 Institution: University of Western Ontario, Western Engineering
+
 Industry Partner: General Motors
+
 Date: March 2025
