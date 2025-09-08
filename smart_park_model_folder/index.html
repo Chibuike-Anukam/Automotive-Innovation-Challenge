@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background-image: url('parking1.jpg');
+            background-size: cover;
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+
+    <header class="absolute top-6 text-center">
+        <h1 class="text-7xl font-bold text-white">SMART PARK</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-col items-center mt-20">
+        <!-- Heading: Nearby Parking Lots -->
+        <h2 class="text-4xl font-bold text-white mb-8">Nearby Parking Lots</h2>
+
+        <!-- Container for the two images and upload buttons -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+            <!-- First Image and Upload Button -->
+            <div class="flex flex-col items-center">
+                <!-- Sub-heading: Costco -->
+                <h3 class="text-2xl font-semibold text-white mb-4">Costco</h3>
+                <img id="image1" src="costco_pl.jpg" alt="Costco Parking" class="w-64 h-64 object-cover rounded-lg shadow-lg">
+                <input type="file" id="fileInput1" accept="image/jpeg" class="hidden">
+                <button id="uploadBtn1" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    Upload Image
+                </button>
+                <!-- "Find A Spot!" Button -->
+                <button id="findSpotBtn1" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hidden">
+                    Find A Spot!
+                </button>
+            </div>
+
+            <!-- Second Image and Upload Button -->
+            <div class="flex flex-col items-center">
+                <!-- Sub-heading: Walmart -->
+                <h3 class="text-2xl font-semibold text-white mb-4">Walmart</h3>
+                <img id="image2" src="walmart_pl.jpg" alt="Walmart Parking" class="w-64 h-64 object-cover rounded-lg shadow-lg">
+                <input type="file" id="fileInput2" accept="image/jpeg" class="hidden">
+                <button id="uploadBtn2" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    Upload Image
+                </button>
+                <!-- "Find A Spot!" Button -->
+                <button id="findSpotBtn2" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hidden">
+                    Find A Spot!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle image upload and display
+        function handleImageUpload(fileInputId, imageId, findSpotBtnId) {
+            const fileInput = document.getElementById(fileInputId);
+            const image = document.getElementById(imageId);
+            const findSpotBtn = document.getElementById(findSpotBtnId);
+
+            fileInput.addEventListener("change", function () {
+                const file = fileInput.files[0];
+                if (file && file.type.startsWith("image/")) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        image.src = e.target.result;
+                        // Show the "Find A Spot!" button
+                        findSpotBtn.classList.remove("hidden");
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Please select a valid image file.");
+                }
+            });
+        }
+
+        // Function to send the image to the API and redirect to the result page
+        function sendImageToAPI(fileInputId) {
+            const fileInput = document.getElementById(fileInputId);
+
+            if (fileInput.files.length === 0) {
+                alert("Please upload an image first.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("image", file);
+
+            // Replace with your API endpoint
+            const apiUrl = "https://your-api-endpoint.com/process-image";
+
+            fetch(apiUrl, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.imageUrl) {
+                    // Redirect to the result page with the image URL as a query parameter
+                    window.location.href = `result.html?image=${encodeURIComponent(data.imageUrl)}`;
+                } else {
+                    alert("Failed to process the image.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to send the image to the API.");
+            });
+        }
+
+        // Trigger file input when buttons are clicked
+        document.getElementById("uploadBtn1").addEventListener("click", function () {
+            document.getElementById("fileInput1").click();
+        });
+
+        document.getElementById("uploadBtn2").addEventListener("click", function () {
+            document.getElementById("fileInput2").click();
+        });
+
+        // Initialize image upload handlers
+        handleImageUpload("fileInput1", "image1", "findSpotBtn1");
+        handleImageUpload("fileInput2", "image2", "findSpotBtn2");
+
+        // Handle "Find A Spot!" button clicks
+        document.getElementById("findSpotBtn1").addEventListener("click", function () {
+            sendImageToAPI("fileInput1");
+        });
+
+        document.getElementById("findSpotBtn2").addEventListener("click", function () {
+            sendImageToAPI("fileInput2");
+        });
+    </script>
+</body>
+</html>

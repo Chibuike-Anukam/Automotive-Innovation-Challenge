@@ -1,0 +1,15 @@
+# Dataset configuration file
+
+# Path to the root directory of the dataset
+path: C:/Projects/ultralytics/parking_dataset
+
+# Path to training and validation images (relative to `path`)
+train: train_images  # Relative path to training images
+val: val_images      # Relative path to validation images
+
+# Number of classes
+nc: 2
+
+# Class names
+names: ['empty', 'occupied']
+

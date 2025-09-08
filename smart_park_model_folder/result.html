@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Smart Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background-image: url('parking1.jpg');
+            background-size: cover;
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+
+    <header class="absolute top-6 text-center">
+        <h1 class="text-7xl font-bold text-white">SMART PARK</h1>
+    </header>
+
+    <!-- Display the returned image -->
+    <div class="flex flex-col items-center mt-20">
+        <h2 class="text-4xl font-bold text-white mb-8">Parking Spot Found!</h2>
+        <img id="resultImage" src="" alt="Result" class="w-96 h-96 object-cover rounded-lg shadow-lg">
+    </div>
+
+    <script>
+        // Get the image URL from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageUrl = urlParams.get("image");
+
+        // Display the image
+        if (imageUrl) {
+            document.getElementById("resultImage").src = imageUrl;
+        } else {
+            alert("No image found in the URL.");
+        }
+    </script>
+</body>
+</html>
